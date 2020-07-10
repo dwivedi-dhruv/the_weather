@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Weather Forecast</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <style>
+  .carousel-inner img {
+    width: 100%;
+    height: 300px;
+  }
+  .box {
+    float: left;
+    width: 330px;
+    margin-left: 30px;
+    margin-top: 30px;
+    padding: 5px;
+    border: 2px solid blue;
+  }
+
+  .navbar-nav > li{
+  padding-left:20px;
+  padding-right:20px;
+  margin-left:20px;
+  margin-right:20px;
+  }
+  </style>
+</head>
+<body>
+
+    <div class="container-fluid bg-secondary text-center">
+            <div class="container-xl text-white" >
+                <h1 class="title" style="text-align:center">
+                   Weather Update
+                </h1>
+            </div>
+    </div>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        <a class="navbar-brand" href="/">
+            <img src="https://s.hdnux.com/photos/47/31/53/10328782/37/920x920.jpg" alt="logo" style="width:40px;">
+        </a>
+            <ul class="navbar-nav">
+                 <li class="nav-item">
+                    <a class="nav-link" href="/" >Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/1" >Add City</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/2" >Remove City</a>
+                </li>
+            </ul>
+    </nav>
+
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+
+  <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://www.portugalresident.com/wp-content/uploads/2020/01/rain_cold.jpg" >
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.stormgeo.com/assets/ArticleImages/thunderstorm-flipped__FocusFillWzQyODgsMjcwMCwieSIsNzRd.jpg" >
+            </div>
+            <div class="carousel-item">
+                <img src="https://specials-images.forbesimg.com/imageserve/5e3f2c88f133f400076bfbe2/960x0.jpg?fit=scale" >
+            </div>
+        </div>
+
+  <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+             <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+
+
+
+        <div class="container">
+            <div class="row">
+
+                    {% for weather in weather_data %}
+
+                    <div class="card box" >
+                            <img class="card-img-top" src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image" style="width:100px; height:100px">
+                        <div class="card-body">
+                            <h4 class="card-title"><b>{{ weather.city }}</b></h4>
+                            <p class="card-text">
+                                <span>Temperature :: {{ weather.temperature }}° C</span>
+                                <br>
+                                <span>Humidity :: {{ weather.humidity }}</span>
+                                <br>
+                                <span>Latitude :: {{ weather.latitude }}</span>
+                                <br>
+                                <span>Longitude :: {{ weather.longitude }}</span>
+                                <br>
+                                <span>Description :: {{ weather.description }}</span>
+                                <br>
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+            </div>
+        </div>
+
+   <div class="container-fluid bg-secondary text-white">
+
+            <div class="media border p-3">
+                <img src="https://i.ya-webdesign.com/images/funny-png-avatar-2.png" alt="Dhruv Dwivedi" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                <div class="media-body">
+                <h4>Dhruv Dwivedi <small><i>Posted on 8 July, 2020</i></small></h4>
+                <p>Welcome to the weather forecaster page. It uses open weather API to get the data of the weather of the different places. </p>
+                </div>
+            </div>
+    </div>
+</body>
+</html>
