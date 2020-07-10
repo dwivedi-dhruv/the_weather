@@ -7,7 +7,7 @@ from .forms import CityForm
 def index(request):
     cities = City.objects.all()  # return all the cities in the database
 
-    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=e9ef56cf045664e04b0ca1b4b35a396e'
+    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=YOUR_API_KEY'
 
     weather_data = []
 
@@ -37,7 +37,7 @@ def add_city(request):
 
     if request.method == 'POST':
         form = CityForm(request.POST)
-        url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=e9ef56cf045664e04b0ca1b4b35a396e'
+        url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=YOUR_API_KEY'
 
         if form.is_valid():
             new_city = form.cleaned_data['name']
